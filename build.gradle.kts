@@ -13,11 +13,11 @@ plugins {
     id("com.bnorm.power.kotlin-power-assert") version "0.13.0"
 }
 
-val group = "com.examplemod"
+val group = "com.ratons"
 val mixinGroup = "$group.mixin"
 
 // the modid and version here are used on the compiled far
-val modid = "examplemod"
+val modid = "ratons"
 val version = "0.0.1"
 
 val skyHanniVersion = "0.27.Beta.4"

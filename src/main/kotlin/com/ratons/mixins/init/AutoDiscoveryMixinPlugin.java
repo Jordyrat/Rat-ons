@@ -1,4 +1,4 @@
-package com.examplemod.mixins.init;
+package com.ratons.mixins.init;
 
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;

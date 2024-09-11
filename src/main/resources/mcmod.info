@@ -1,14 +1,14 @@
 [
   {
     "modid": "${modid}",
-    "name": "Example Mod",
-    "description": "A mod that is used as an example.",
+    "name": "Rat-ons",
+    "description": "Silly little mod with silly little features.",
     "version": "${version}",
     "mcversion": "1.8.9",
     "url": "",
     "updateUrl": "",
     "authorList": [
-      "You"
+      "Jordyrat"
     ],
     "credits": "",
     "logoFile": "",

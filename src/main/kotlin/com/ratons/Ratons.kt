@@ -1,15 +1,12 @@
-package com.examplemod
+package com.ratons
 
-import at.hannibal2.skyhanni.events.LorenzTickEvent
 import at.hannibal2.skyhanni.events.SecondPassedEvent
-import com.examplemod.commands.Commands
-import com.examplemod.config.Features
-import com.examplemod.features.misc.ExampleFeature
+import com.ratons.commands.Commands
+import com.ratons.config.Features
+import com.ratons.features.misc.ExampleFeature
 import io.github.notenoughupdates.moulconfig.managed.ManagedConfig
 import net.minecraft.client.Minecraft
-import net.minecraft.client.gui.GuiScreen
 import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -18,13 +15,13 @@ import org.apache.logging.log4j.Logger
 import java.io.File
 
 @Mod(
-    modid = ExampleMod.MOD_ID,
+    modid = Ratons.MOD_ID,
     clientSideOnly = true,
     useMetadata = true,
-    version = ExampleMod.VERSION,
+    version = Ratons.VERSION,
     dependencies = "before:skyhanni",
 )
-class ExampleMod {
+class Ratons {
 
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
@@ -56,13 +53,13 @@ class ExampleMod {
     }
 
     companion object {
-        const val MOD_ID = "examplemod"
+        const val MOD_ID = "ratons"
         const val VERSION = "0.0.1"
 
-        const val HIDE_MOD_ID: Boolean = false
+        const val HIDE_MOD_ID: Boolean = true
 
         @JvmField
-        val logger: Logger = LogManager.getLogger("ExampleMod")
+        val logger: Logger = LogManager.getLogger("Ratons")
 
         @JvmField
         val modules: MutableList<Any> = ArrayList()

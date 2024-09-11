@@ -1,6 +1,6 @@
-package com.examplemod.mixins.transformers;
+package com.ratons.mixins.transformers;
 
-import com.examplemod.ExampleMod;
+import com.ratons.Ratons;
 import net.minecraft.client.gui.GuiMainMenu;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,6 +13,6 @@ public class MixinGuiMainMenu {
 
     @Inject(method = "initGui", at = @At("HEAD"))
     public void onInitGui(CallbackInfo ci) {
-        ExampleMod.logger.info("Hello from Main Menu!");
+        Ratons.logger.info("Hello from Main Menu!");
     }
 }

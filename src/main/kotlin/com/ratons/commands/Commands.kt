@@ -1,4 +1,4 @@
-package com.examplemod.commands
+package com.ratons.commands
 
 import at.hannibal2.skyhanni.SkyHanniMod
 import at.hannibal2.skyhanni.data.GuiEditManager
@@ -7,7 +7,7 @@ import at.hannibal2.skyhanni.utils.StringUtils.splitLines
 import at.hannibal2.skyhanni.utils.chat.Text
 import at.hannibal2.skyhanni.utils.chat.Text.hover
 import at.hannibal2.skyhanni.utils.chat.Text.suggest
-import com.examplemod.ExampleMod
+import com.ratons.Ratons
 import io.github.notenoughupdates.moulconfig.gui.GuiScreenElementWrapper
 import net.minecraft.command.CommandBase
 import net.minecraft.command.ICommandSender
@@ -17,8 +17,8 @@ import net.minecraftforge.client.ClientCommandHandler
 object Commands {
 
     fun init() {
-        registerCommand("emconfig", "Opens the config GUI", openMainMenu)
-        registerCommand("emhelp", "Shows all commands", ::commandHelp)
+        registerCommand("rat", "Opens the config GUI", openMainMenu)
+        registerCommand("rathelp", "Shows all commands", ::commandHelp)
     }
 
     private val openMainMenu: (Array<String>) -> Unit = {
@@ -35,7 +35,7 @@ object Commands {
     private data class CommandInfo(val name: String, val description: String)
 
     private fun openConfigGui(search: String? = null) {
-        val editor = ExampleMod.managedConfig.getEditor()
+        val editor = Ratons.managedConfig.getEditor()
 
         search?.let { editor.search(search) }
         SkyHanniMod.screenToOpen = GuiScreenElementWrapper(editor)
@@ -65,9 +65,9 @@ object Commands {
         if (args.size == 1) {
             val searchTerm = args[0].lowercase()
             filter = { it.lowercase().contains(searchTerm) }
-            title = "SillyMod commands with '§e$searchTerm§7'"
+            title = "Rat-ons commands with '§e$searchTerm§7'"
         } else {
-            title = "All SillyMod commands"
+            title = "All Rat-ons commands"
         }
 
         val components = mutableListOf<ChatComponentText>()

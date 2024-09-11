@@ -1,4 +1,4 @@
-package com.examplemod.config;
+package com.ratons.config;
 
 import at.hannibal2.skyhanni.config.core.config.Position;
 import com.google.gson.annotations.Expose;

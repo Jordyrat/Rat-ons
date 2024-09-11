@@ -1,14 +1,14 @@
-package com.examplemod.features.misc
+package com.ratons.features.misc
 
 import at.hannibal2.skyhanni.events.GuiRenderEvent
 import at.hannibal2.skyhanni.utils.RenderUtils.renderString
-import com.examplemod.ExampleMod
+import com.ratons.Ratons
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @Suppress("SkyHanniModuleInspection")
 object ExampleFeature {
 
-    private val config get() = ExampleMod.feature.exampleCategory
+    private val config get() = Ratons.feature.exampleCategory
 
     @SubscribeEvent
     fun onRenderOverlay(event: GuiRenderEvent.GuiOverlayRenderEvent) {

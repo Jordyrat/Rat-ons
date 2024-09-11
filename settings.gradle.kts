@@ -23,4 +23,4 @@ plugins {
 }
 
 
-rootProject.name = "ExampleMod"
+rootProject.name = "Rat-ons"

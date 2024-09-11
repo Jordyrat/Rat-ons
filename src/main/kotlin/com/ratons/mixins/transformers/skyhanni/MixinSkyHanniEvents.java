@@ -1,7 +1,7 @@
-package com.examplemod.mixins.transformers.skyhanni;
+package com.ratons.mixins.transformers.skyhanni;
 
 import at.hannibal2.skyhanni.api.event.SkyHanniEvents;
-import com.examplemod.ExampleMod;
+import com.ratons.Ratons;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,7 +21,7 @@ public abstract class MixinSkyHanniEvents {
 
     @Inject(method = "init*", at = @At(value = "HEAD"), remap = false)
     private void init(List<?> instances, CallbackInfo ci) {
-        for (Object module : ExampleMod.modules) {
+        for (Object module : Ratons.modules) {
             for (Method method : module.getClass().getDeclaredMethods()) {
                 registerMethod(method, module);
             }
