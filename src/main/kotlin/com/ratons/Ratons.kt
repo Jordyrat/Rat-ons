@@ -1,10 +1,10 @@
 package com.ratons
 
+import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
 import com.ratons.config.Features
 import com.ratons.features.misc.ExampleFeature
-import io.github.notenoughupdates.moulconfig.managed.ManagedConfig
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -53,13 +53,14 @@ class Ratons {
     }
 
     companion object {
-        const val MOD_ID = "ratons"
-        const val VERSION = "0.0.1"
+        const val MOD_ID = "@MOD_ID@"
+        const val VERSION = "@MOD_VER@"
+        const val MOD_NAME = "@MOD_NAME@"
 
         const val HIDE_MOD_ID: Boolean = true
 
         @JvmField
-        val logger: Logger = LogManager.getLogger("Ratons")
+        val logger: Logger = LogManager.getLogger(MOD_NAME)
 
         @JvmField
         val modules: MutableList<Any> = ArrayList()

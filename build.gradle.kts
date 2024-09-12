@@ -11,16 +11,25 @@ plugins {
     kotlin("jvm") version "1.9.0"
     kotlin("plugin.serialization") version "1.8.0"
     id("com.bnorm.power.kotlin-power-assert") version "0.13.0"
+    id("net.kyori.blossom") version "1.3.2"
 }
 
-val group = "com.ratons"
-val mixinGroup = "$group.mixin"
+//Constants:
+val mod_name: String by project
+val mod_version: String by project
+val mod_id: String by project
+val skyhanni_version: String by project
 
-// the modid and version here are used on the compiled far
-val modid = "ratons"
-val version = "0.0.1"
+blossom {
+    replaceToken("@MOD_VER@", mod_version)
+    replaceToken("@MOD_NAME@", mod_name)
+    replaceToken("@MOD_ID@", mod_id)
+}
 
-val skyHanniVersion = "0.27.Beta.4"
+group = "com.$mod_id"
+version = mod_version
+val modid = mod_id
+val skyHanniVersion = skyhanni_version
 
 val gitHash by lazy {
     val baos = ByteArrayOutputStream()
@@ -85,17 +94,12 @@ dependencies {
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
 
-    implementation(kotlin("stdlib-jdk8"))
     headlessLwjgl(libs.headlessLwjgl)
-
-    // If you don't want mixins, remove these lines
 
     shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         isTransitive = false
     }
     annotationProcessor("org.spongepowered:mixin:0.8.4-SNAPSHOT")
-
-    implementation(kotlin("stdlib-jdk8"))
 
     // If you don't want to log in with your real minecraft account, remove this line
     runtimeOnly("me.djtheredstoner:DevAuth-forge-legacy:1.1.2")
@@ -117,9 +121,6 @@ dependencies {
         exclude(group = "null", module = "unspecified")
         isTransitive = false
     }
-
-    shadowModImpl(libs.moulconfig)
-    shadowImpl("org.jetbrains.kotlin:kotlin-reflect:1.9.0")
 }
 
 kotlin {
@@ -138,7 +139,6 @@ loom {
             property("mixin.debug", "true")
             property("devauth.configDir", rootProject.file(".devauth").absolutePath)
             arg("--tweakClass", "org.spongepowered.asm.launch.MixinTweaker")
-            arg("--tweakClass", "io.github.notenoughupdates.moulconfig.tweaker.DevelopmentResourceTweaker")
             arg("--mods", devenvMod.resolve().joinToString(",") { it.relativeTo(file("run")).path })
         }
     }
@@ -164,14 +164,15 @@ loom {
 }
 
 tasks.processResources {
+    inputs.property("mod_id", mod_id)
+    inputs.property("mod_name", mod_name)
     inputs.property("version", version)
     filesMatching("mcmod.info") {
-        expand(
-            mapOf(
-                "modid" to modid,
-                "version" to version
-            )
-        )
+        expand(mapOf(
+            "mod_id" to mod_id,
+            "mod_name" to mod_name,
+            "version" to version
+        ))
     }
 }
 
@@ -186,7 +187,7 @@ tasks.withType(JavaCompile::class) {
 
 tasks.withType(Jar::class) {
     destinationDirectory.set(project.layout.buildDirectory.dir("badjars"))
-    archiveBaseName.set("$modid")
+    archiveBaseName.set(mod_id)
     manifest.attributes.run {
         this["FMLCorePluginContainsFMLMod"] = "true"
         this["ForceLoadAsMod"] = "true"
@@ -213,7 +214,6 @@ tasks.shadowJar {
     }
     exclude("META-INF/versions/**")
     mergeServiceFiles()
-    relocate("io.github.notenoughupdates.moulconfig", "$group.deps.moulconfig")
 }
 
 tasks.jar {

@@ -1,9 +1,9 @@
 package com.ratons.config;
 
+import at.hannibal2.skyhanni.deps.moulconfig.Config;
+import at.hannibal2.skyhanni.deps.moulconfig.annotations.Category;
 import com.ratons.Ratons;
 import com.google.gson.annotations.Expose;
-import io.github.notenoughupdates.moulconfig.Config;
-import io.github.notenoughupdates.moulconfig.annotations.Category;
 
 public class Features extends Config {
 
@@ -14,7 +14,7 @@ public class Features extends Config {
 
     @Override
     public String getTitle() {
-        return "Ratons " + Ratons.VERSION;
+        return Ratons.MOD_NAME + " " + Ratons.VERSION;
     }
 
     @Override
