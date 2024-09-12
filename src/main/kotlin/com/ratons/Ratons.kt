@@ -60,7 +60,7 @@ class Ratons {
         const val HIDE_MOD_ID: Boolean = true
 
         @JvmField
-        val logger: Logger = LogManager.getLogger("Ratons")
+        val logger: Logger = LogManager.getLogger(MOD_NAME)
 
         @JvmField
         val modules: MutableList<Any> = ArrayList()
