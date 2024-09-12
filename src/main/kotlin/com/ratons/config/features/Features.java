@@ -1,9 +1,10 @@
-package com.ratons.config;
+package com.ratons.config.features;
 
 import at.hannibal2.skyhanni.deps.moulconfig.Config;
 import at.hannibal2.skyhanni.deps.moulconfig.annotations.Category;
 import com.ratons.Ratons;
 import com.google.gson.annotations.Expose;
+import com.ratons.config.features.instances.InstancesConfig;
 
 public class Features extends Config {
 
@@ -23,7 +24,7 @@ public class Features extends Config {
     }
 
     @Expose
-    @Category(name = "Example", desc = "")
-    public ExampleCategory exampleCategory = new ExampleCategory();
+    @Category(name = "Instances", desc = "Features for instanced content.")
+    public InstancesConfig instancesConfig = new InstancesConfig();
 
 }

@@ -3,8 +3,8 @@ package com.ratons
 import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
-import com.ratons.config.Features
-import com.ratons.features.misc.ExampleFeature
+import com.ratons.config.features.Features
+import com.ratons.features.instances.PearlRefill
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -29,7 +29,7 @@ class Ratons {
             this,
 
             // features
-            ExampleFeature,
+            PearlRefill,
 
         ).loadModules()
 
