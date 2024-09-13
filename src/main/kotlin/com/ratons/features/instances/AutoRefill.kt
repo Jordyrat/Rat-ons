@@ -35,9 +35,9 @@ object AutoRefill {
         if (!config.enabled) return
         for (it in Refillables.entries) {
             when (it) {
-                Refillables.ENDER_PEARL -> if (!config.refillPearls) return
-                Refillables.DECOY -> if (!config.refillDecoys || DungeonAPI.getCurrentBoss() != DungeonFloor.F4) return
-                Refillables.INFLATABLE_JERRY -> if (!config.refillJerrys || DungeonAPI.dungeonFloor!! != "M7") return
+                Refillables.ENDER_PEARL -> if (!config.refillPearls) continue
+                Refillables.DECOY -> if (!config.refillDecoys || DungeonAPI.getCurrentBoss() != DungeonFloor.F4) continue
+                Refillables.INFLATABLE_JERRY -> if (!config.refillJerrys || !DungeonAPI.isOneOf("M7")) continue
             }
             val internalName = it.internalName
 
