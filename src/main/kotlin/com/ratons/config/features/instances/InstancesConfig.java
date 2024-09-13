@@ -6,9 +6,9 @@ import com.google.gson.annotations.Expose;
 
 public class InstancesConfig {
 
+    @Expose
     @ConfigOption(name = "Auto Refill", desc = "")
     @Accordion
-    @Expose
     public AutoRefillConfig autoRefill = new AutoRefillConfig();
 
 }
