@@ -7,6 +7,7 @@ import at.hannibal2.skyhanni.events.KuudraEnterEvent
 import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
 import at.hannibal2.skyhanni.features.dungeon.DungeonFloor
 import at.hannibal2.skyhanni.utils.ChatUtils
+import at.hannibal2.skyhanni.utils.DelayedRun
 import at.hannibal2.skyhanni.utils.InventoryUtils.getAmountInInventory
 import at.hannibal2.skyhanni.utils.NEUInternalName.Companion.asInternalName
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
@@ -19,10 +20,6 @@ object PearlRefill {
 
     private val config get() = Ratons.feature.instancesConfig.autoRefill
 
-    init {
-        Refillables.entries
-    }
-
     @SubscribeEvent
     fun onDungeonStart(event: DungeonStartEvent) {
         newInstance()
@@ -30,29 +27,33 @@ object PearlRefill {
 
     @SubscribeEvent
     fun onKuudraStart(event: KuudraEnterEvent) {
-        val enter = SimpleTimeMark.now()
-        while (enter.passedSince() < 10.seconds) return
-        newInstance()
+        // TODO: use chat pattern instead
+        DelayedRun.runDelayed(10.seconds) {
+            newInstance()
+        }
     }
 
     private fun newInstance() {
         if (!config.enabled) return
         for (it in Refillables.entries) {
-            if (!config.refillPearls && it.internalName == "ENDER_PEARL") return
-            if (it.internalName == "DUNGEON_DECOY" && (!config.refillDecoys || DungeonAPI.getCurrentBoss() != DungeonFloor.F4)) return
-            if (it.internalName == "INFLATABLE_JERRY" && (!config.refillJerrys || DungeonAPI.dungeonFloor!! != "M7")) return
+            when (it) {
+                Refillables.ENDER_PEARL -> if (!config.refillPearls) return
+                Refillables.DECOY -> if (!config.refillDecoys || DungeonAPI.getCurrentBoss() != DungeonFloor.F4) return
+                Refillables.INFLATABLE_JERRY -> if (!config.refillJerrys || DungeonAPI.dungeonFloor!! != "M7") return
+            }
+            val internalName = it.internalName
 
-            val amount = it.internalName.asInternalName().getAmountInInventory()
+            val amount = internalName.getAmountInInventory()
             val difference = it.stackSize - amount
 
-            if (it.internalName.asInternalName().getAmountInSacks() < difference) {
+            if (internalName.getAmountInSacks() < difference) {
                 ChatUtils.chat("You do not have enough items to refill ${it.displayName}(s).")
                 return
             }
             if (difference > 0) {
-                GetFromSackAPI.getFromSack(it.internalName.asInternalName(), difference)
+                GetFromSackAPI.getFromSack(internalName, difference)
             }
         }
 
-        }
     }
+}
