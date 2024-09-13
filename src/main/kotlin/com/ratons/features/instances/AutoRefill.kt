@@ -9,14 +9,12 @@ import at.hannibal2.skyhanni.features.dungeon.DungeonFloor
 import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.DelayedRun
 import at.hannibal2.skyhanni.utils.InventoryUtils.getAmountInInventory
-import at.hannibal2.skyhanni.utils.NEUInternalName.Companion.asInternalName
-import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import com.ratons.Ratons
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
 
 @Suppress("SkyHanniModuleInspection")
-object PearlRefill {
+object AutoRefill {
 
     private val config get() = Ratons.feature.instancesConfig.autoRefill
 
