@@ -24,6 +24,10 @@ public class Features extends Config {
     }
 
     @Expose
+    @Category(name = "About", desc = "")
+    public About about = new About();
+
+    @Expose
     @Category(name = "Instances", desc = "Features for instanced content.")
     public InstancesConfig instancesConfig = new InstancesConfig();
 

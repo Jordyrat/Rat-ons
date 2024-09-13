@@ -9,6 +9,7 @@ import at.hannibal2.skyhanni.utils.chat.Text
 import at.hannibal2.skyhanni.utils.chat.Text.hover
 import at.hannibal2.skyhanni.utils.chat.Text.suggest
 import com.ratons.Ratons
+import com.ratons.features.misc.UpdateManager
 import net.minecraft.command.CommandBase
 import net.minecraft.command.ICommandSender
 import net.minecraft.util.ChatComponentText
@@ -19,6 +20,7 @@ object Commands {
     fun init() {
         registerCommand("rat", "Opens the config GUI", openMainMenu)
         registerCommand("rathelp", "Shows all commands", ::commandHelp)
+        registerCommand("ratupdate", "Checks for updates") { UpdateManager.checkUpdate() }
     }
 
     private val openMainMenu: (Array<String>) -> Unit = {
