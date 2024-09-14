@@ -6,6 +6,7 @@ import com.ratons.commands.Commands
 import com.ratons.config.features.Features
 import com.ratons.features.instances.AutoRefill
 import com.ratons.features.misc.UpdateManager
+import com.ratons.utils.KuudraAPI
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -17,6 +18,7 @@ import java.io.File
 
 @Mod(
     modid = Ratons.MOD_ID,
+    name = Ratons.MOD_NAME,
     clientSideOnly = true,
     useMetadata = true,
     version = Ratons.VERSION,
@@ -32,6 +34,9 @@ class Ratons {
             // features
             AutoRefill,
             UpdateManager,
+
+            // utils
+            KuudraAPI,
 
         ).loadModules()
 
