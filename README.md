@@ -2,8 +2,11 @@
 
 <div align="center">
     
-[![Made with Kotlin](https://img.shields.io/badge/Made%20With-Kotlin-orange?style=for-the-badge&logo=kotlin&logocolor=white)](https://kotlinlang.org/)
-[![Downloads](https://img.shields.io/github/downloads/Jordyrat/Rat-ons/latest/total?style=for-the-badge&logo=github)](https://github.com/Jordyrat/Rat-ons/releases)
+[![Made with Kotlin](https://img.shields.io/badge/Made%20With-Kotlin-purple?style=for-the-badge&logo=kotlin&logocolor=white&color=7F52FF)](https://kotlinlang.org/)
+[![Downloads](https://img.shields.io/github/downloads/Jordyrat/Rat-ons/latest/total?style=for-the-badge&logo=github&color=green)](https://github.com/Jordyrat/Rat-ons/releases)
+[![Version](https://img.shields.io/github/v/release/jordyrat/Rat-ons?include_prereleases&display_name=release&style=for-the-badge&label=Version&color=blue)](https://github.com/Jordyrat/Rat-ons/releases)
+[![License](https://img.shields.io/github/license/jordyrat/Rat-ons?style=for-the-badge&label=License)](LICENSE)
+
 </div>
 
 A 1.8.9 Minecraft mod made for Hypixel Skyblock. Rat-ons focuses on trying to reduce your modlist with features considered UAYOR (Use At Your Own Risk).
