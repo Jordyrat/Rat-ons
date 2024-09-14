@@ -5,6 +5,7 @@ import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
 import com.ratons.config.features.Features
 import com.ratons.features.instances.AutoRefill
+import com.ratons.features.misc.UpdateManager
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -30,6 +31,7 @@ class Ratons {
 
             // features
             AutoRefill,
+            UpdateManager,
 
         ).loadModules()
 
@@ -42,8 +44,6 @@ class Ratons {
             managedConfig.saveToFile()
         }
     }
-
-    val mc get(): Minecraft = Minecraft.getMinecraft()
 
     private fun List<Any>.loadModules() = forEach { loadModule(it) }
 
@@ -58,6 +58,8 @@ class Ratons {
         const val MOD_NAME = "@MOD_NAME@"
 
         const val HIDE_MOD_ID: Boolean = true
+
+        val mc get(): Minecraft = Minecraft.getMinecraft()
 
         @JvmField
         val logger: Logger = LogManager.getLogger(MOD_NAME)
