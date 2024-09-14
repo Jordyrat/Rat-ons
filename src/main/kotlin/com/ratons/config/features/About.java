@@ -7,12 +7,12 @@ import com.google.gson.annotations.Expose;
 public class About {
 
     @Expose
-    @ConfigOption(name = "Auto Updates", desc = "")
+    @ConfigOption(name = "Auto Updates", desc = "Automatically updates when a new version is found.")
     @ConfigEditorBoolean
     public boolean autoUpdates = true;
 
     @Expose
-    @ConfigOption(name = "Debug", desc = "")
+    @ConfigOption(name = "Debug", desc = "Developer setting for checking debug messages.")
     @ConfigEditorBoolean
     public boolean debug = false;
 
