@@ -1,17 +1,16 @@
 package com.ratons.features.instances
 
 import at.hannibal2.skyhanni.api.GetFromSackAPI
+import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.data.SackAPI.getAmountInSacks
 import at.hannibal2.skyhanni.events.DungeonStartEvent
-import at.hannibal2.skyhanni.events.KuudraEnterEvent
 import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
 import at.hannibal2.skyhanni.features.dungeon.DungeonFloor
-import at.hannibal2.skyhanni.utils.DelayedRun
 import at.hannibal2.skyhanni.utils.InventoryUtils.getAmountInInventory
 import com.ratons.Ratons
+import com.ratons.events.KuudraStartEvent
 import com.ratons.utils.ChatUtils
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import kotlin.time.Duration.Companion.seconds
 
 @Suppress("SkyHanniModuleInspection")
 object AutoRefill {
@@ -23,12 +22,9 @@ object AutoRefill {
         newInstance()
     }
 
-    @SubscribeEvent
-    fun onKuudraStart(event: KuudraEnterEvent) {
-        // TODO: use chat pattern instead
-        DelayedRun.runDelayed(10.seconds) {
-            newInstance()
-        }
+    @HandleEvent
+    fun onKuudraStart(event: KuudraStartEvent) {
+        newInstance()
     }
 
     private fun newInstance() {
