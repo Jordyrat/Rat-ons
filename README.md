@@ -20,7 +20,7 @@ If you like Rat-ons, please consider Starring!
 4. **Enjoy** using the mods features to enhance your gameplay!
 
 ## Support
-Suggest features and report issues using the **Issues** tab above. We do not current have a discord for support but please feel free to use the **Discussions** tab to talk to other members and ask for support.
+Suggest features and report issues using the **Issues** tab above. We do not currently have a discord for support but please feel free to use the **Discussions** tab to talk to other members and ask for support.
 
 ### Issues
 
@@ -28,7 +28,7 @@ Please follow the formatting rules below when creating a new issue.
 
 * Start your issue with its type, these include:
     - **Feature:** to suggest any new features for the mod.
-    - **Imporvement:** to suggest ann imporvement to an existing feature.
+    - **Improvement:** to suggest an improvement to an existing feature.
     - **Bug:** to report a bug with the mod.
     - **Docs:** to suggest any changes to the mod's documentation.
     - **Backend:** to suggest any changes to how the backend code works.
@@ -42,4 +42,4 @@ No specific formatting is required in the **Discussions** tab but please ensure 
 
 ## Contributing
 
-Rat-ons is an open-source mod and is open to contributons from anyone. If you would like to contribute to Rat-ons, please follow the [Contributors Guide](docs/CONTRIBUTING.md), create a feature and make a pull request when you're ready!
+Rat-ons is an open-source mod and is open to contributions from anyone. If you would like to contribute to Rat-ons, please follow the [Contributors Guide](docs/CONTRIBUTING.md), create a feature and make a pull request when you're ready!
