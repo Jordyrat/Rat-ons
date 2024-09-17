@@ -52,7 +52,7 @@ object RelicSpawnTimer {
 
     private fun startTimer() {
         ++messagesSentAmount
-        if (messagesSentAmount != 2) return
+        if (messagesSentAmount != 3) return
         timerEnd = SimpleTimeMark.now() + 4.seconds
     }
 
