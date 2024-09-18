@@ -33,7 +33,7 @@ object UpdateManager {
 
     private val context = UpdateContext(
         GithubReleaseUpdateSource("Jordyrat", "Rat-ons"),
-        UpdateTarget.deleteAndSaveInTheSameFolder(UpdateManager::class.java),
+        UpdateTarget.deleteAndSaveInTheSameFolder(this::class.java),
         CurrentVersion.ofTag(Ratons.VERSION),
         Ratons.MOD_ID,
     )
