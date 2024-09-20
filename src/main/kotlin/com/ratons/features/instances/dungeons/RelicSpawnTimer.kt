@@ -2,16 +2,17 @@ package com.ratons.features.instances.dungeons
 
 import at.hannibal2.skyhanni.events.LorenzChatEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
-import at.hannibal2.skyhanni.events.LorenzTickEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
 import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
-import at.hannibal2.skyhanni.utils.LocationUtils
-import at.hannibal2.skyhanni.utils.LocationUtils.distanceSqToPlayer
+import at.hannibal2.skyhanni.utils.ChatUtils
+import at.hannibal2.skyhanni.utils.LocationUtils.distanceToPlayerSqIgnoreY
 import at.hannibal2.skyhanni.utils.LorenzColor
 import at.hannibal2.skyhanni.utils.LorenzVec
+import at.hannibal2.skyhanni.utils.RecalculatingValue
 import at.hannibal2.skyhanni.utils.RenderUtils.drawString
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.TimeUtils.format
+import at.hannibal2.skyhanni.utils.TimeUtils.ticks
 import com.ratons.Ratons
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
@@ -34,12 +35,14 @@ object RelicSpawnTimer {
         LorenzVec(92, 6, 56),
     )
 
-    private var location: LorenzVec? = null
+    private val location by RecalculatingValue(1.ticks) {
+        locations.minBy { it.distanceToPlayerSqIgnoreY() }
+    }
 
     @SubscribeEvent
-    fun onDungeonStart(event: LorenzWorldChangeEvent) {
+    fun onWorldChange(event: LorenzWorldChangeEvent) {
         messagesSentAmount = 0
-        location = null
+        timerEnd = SimpleTimeMark.farPast()
     }
 
     @SubscribeEvent
@@ -52,24 +55,19 @@ object RelicSpawnTimer {
 
     private fun startTimer() {
         ++messagesSentAmount
+        ChatUtils.debug("Found message: $messagesSentAmount")
         if (messagesSentAmount != 3) return
+        ChatUtils.debug("Starting timer")
         timerEnd = SimpleTimeMark.now() + 4.seconds
-    }
-
-    @SubscribeEvent
-    fun onTick(event: LorenzTickEvent) {
-        if (!isEnabled()) return
-        location = locations.minBy { it.distanceSqToPlayer() }
     }
 
     @SubscribeEvent
     fun onRenderWorld(event: LorenzRenderWorldEvent) {
         if (!isEnabled()) return
         if (timerEnd.isInPast()) return
-        val pos = location ?: return
-        if (LocationUtils.playerLocation().y > 20) return
+        //if (LocationUtils.playerLocation().y > 20) return
         val text = timerEnd.timeUntil().format(showMilliSeconds = true)
-        event.drawString(pos, text, true, LorenzColor.LIGHT_PURPLE.toColor())
+        event.drawString(location, text, true, LorenzColor.LIGHT_PURPLE.toColor())
     }
 
     private fun isEnabled() =
