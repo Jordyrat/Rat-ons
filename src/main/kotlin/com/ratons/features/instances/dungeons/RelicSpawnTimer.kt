@@ -4,7 +4,6 @@ import at.hannibal2.skyhanni.events.LorenzChatEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
 import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
-import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.LocationUtils.distanceToPlayerSqIgnoreY
 import at.hannibal2.skyhanni.utils.LorenzColor
 import at.hannibal2.skyhanni.utils.LorenzVec
@@ -14,6 +13,7 @@ import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.TimeUtils.format
 import at.hannibal2.skyhanni.utils.TimeUtils.ticks
 import com.ratons.Ratons
+import com.ratons.utils.ChatUtils
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
 
@@ -56,7 +56,7 @@ object RelicSpawnTimer {
     private fun startTimer() {
         ++messagesSentAmount
         ChatUtils.debug("Found message: $messagesSentAmount")
-        if (messagesSentAmount != 3) return
+        if (messagesSentAmount != 2) return
         ChatUtils.debug("Starting timer")
         timerEnd = SimpleTimeMark.now() + 4.seconds
     }
