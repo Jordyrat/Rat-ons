@@ -4,13 +4,10 @@ import at.hannibal2.skyhanni.events.LorenzChatEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
 import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
-import at.hannibal2.skyhanni.utils.LocationUtils.distanceToPlayerSqIgnoreY
 import at.hannibal2.skyhanni.utils.LorenzVec
-import at.hannibal2.skyhanni.utils.RecalculatingValue
 import at.hannibal2.skyhanni.utils.RenderUtils.drawString
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.TimeUtils.format
-import at.hannibal2.skyhanni.utils.TimeUtils.ticks
 import com.ratons.Ratons
 import com.ratons.utils.ChatUtils
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -34,9 +31,9 @@ object RelicSpawnTimer {
         LorenzVec(92, 6, 56),
     )
 
-    private val location by RecalculatingValue(1.ticks) {
+    /*private val location by RecalculatingValue(1.ticks) {
         locations.minBy { it.distanceToPlayerSqIgnoreY() }
-    }
+    }*/
 
     @SubscribeEvent
     fun onWorldChange(event: LorenzWorldChangeEvent) {
@@ -65,8 +62,12 @@ object RelicSpawnTimer {
         if (!isEnabled()) return
         if (timerEnd.isInPast()) return
         //if (LocationUtils.playerLocation().y > 20) return
-        val text = "§d" + timerEnd.timeUntil().format(showMilliSeconds = true)
-        event.drawString(location.up(2.0), text, true)
+        locations.forEach { location ->
+            val text = "§d" + timerEnd.timeUntil().format(showMilliSeconds = true)
+            event.drawString(location.up(2.0), text, true)
+        }
+        /*val text = "§d" + timerEnd.timeUntil().format(showMilliSeconds = true)
+        event.drawString(location.up(2.0), text, true)*/
     }
 
     private fun isEnabled() =
