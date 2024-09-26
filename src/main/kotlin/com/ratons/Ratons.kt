@@ -5,6 +5,7 @@ import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
 import com.ratons.config.features.Features
 import com.ratons.data.KuudraAPI
+import com.ratons.data.PacketData
 import com.ratons.features.instances.AutoRefill
 import com.ratons.features.instances.dungeons.RelicSpawnTimer
 import com.ratons.features.misc.UpdateManager
@@ -39,6 +40,7 @@ class Ratons {
 
             // data
             KuudraAPI,
+            PacketData,
 
         ).loadModules()
 

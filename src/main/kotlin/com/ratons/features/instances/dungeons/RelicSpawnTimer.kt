@@ -1,5 +1,6 @@
 package com.ratons.features.instances.dungeons
 
+import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.events.LorenzChatEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
@@ -7,10 +8,12 @@ import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
 import at.hannibal2.skyhanni.utils.LorenzColor
 import at.hannibal2.skyhanni.utils.LorenzVec
 import at.hannibal2.skyhanni.utils.RenderUtils.drawString
-import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.TimeUtils.format
 import com.ratons.Ratons
+import com.ratons.events.ServerTickEvent
 import com.ratons.utils.ChatUtils
+import com.ratons.utils.RatUtils.isZero
+import com.ratons.utils.RatUtils.tick
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
 
@@ -22,13 +25,13 @@ object RelicSpawnTimer {
     private const val START_MESSAGE = "§4[BOSS] Necron§r§c: §r§cARGH!"
 
     private var messagesSentAmount = 0
-    private var timerEnd = SimpleTimeMark.farPast()
+    private var timer = 0.seconds
     private var relic: Relic? = null
 
     @SubscribeEvent
     fun onWorldChange(event: LorenzWorldChangeEvent) {
         messagesSentAmount = 0
-        timerEnd = SimpleTimeMark.farPast()
+        timer = 0.seconds
         relic = null
     }
 
@@ -40,11 +43,16 @@ object RelicSpawnTimer {
         }
     }
 
+    @HandleEvent
+    fun onServerTick(event: ServerTickEvent) {
+        timer = timer.tick()
+    }
+
     private fun startTimer() {
         ++messagesSentAmount
         if (messagesSentAmount != 2) return
         ChatUtils.debug("Starting Relic timer")
-        timerEnd = SimpleTimeMark.now() + 4.seconds
+        timer = 4.seconds
         relic = Relic.getRelic()
     }
 
@@ -52,8 +60,8 @@ object RelicSpawnTimer {
     fun onRenderWorld(event: LorenzRenderWorldEvent) {
         if (!isEnabled()) return
         val relic = relic ?: return
-        if (timerEnd.isInPast()) return
-        val text = relic.color.getChatColor() + timerEnd.timeUntil().format(showMilliSeconds = true)
+        if (timer.isZero()) return
+        val text = relic.color.getChatColor() + timer.format(showMilliSeconds = true)
         event.drawString(relic.location.up(2.0), text, true)
     }
 
