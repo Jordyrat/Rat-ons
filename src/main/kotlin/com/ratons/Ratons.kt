@@ -4,6 +4,11 @@ import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
 import com.ratons.config.features.Features
+import com.ratons.features.esp.CustomEsp
+import com.ratons.features.esp.MobEsp
+import com.ratons.features.esp.PeltEsp
+import com.ratons.features.esp.PestEsp
+import com.ratons.features.esp.StarredEsp
 import com.ratons.features.instances.AutoRefill
 import com.ratons.features.misc.UpdateManager
 import com.ratons.utils.KuudraAPI
@@ -32,6 +37,11 @@ class Ratons {
             this,
 
             // features
+            MobEsp,
+            CustomEsp,
+            PeltEsp,
+            PestEsp,
+            StarredEsp,
             AutoRefill,
             UpdateManager,
 
