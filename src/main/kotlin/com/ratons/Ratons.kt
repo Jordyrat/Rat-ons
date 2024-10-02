@@ -4,9 +4,11 @@ import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
 import com.ratons.config.features.Features
+import com.ratons.data.KuudraAPI
+import com.ratons.data.PacketData
 import com.ratons.features.instances.AutoRefill
+import com.ratons.features.instances.dungeons.RelicSpawnTimer
 import com.ratons.features.misc.UpdateManager
-import com.ratons.utils.KuudraAPI
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -33,10 +35,12 @@ class Ratons {
 
             // features
             AutoRefill,
+            RelicSpawnTimer,
             UpdateManager,
 
-            // utils
+            // data
             KuudraAPI,
+            PacketData,
 
         ).loadModules()
 
