@@ -54,8 +54,8 @@ object UpdateManager {
         checkUpdate()
     }
 
-    fun checkUpdate() {
-        activePromise = context.checkUpdate("full")
+    fun checkUpdate(stream: String = config.updateStream.streamName) {
+        activePromise = context.checkUpdate(stream)
             .thenAcceptAsync({
                 potentialUpdate = it
                 if (it.isUpdateAvailable) {
