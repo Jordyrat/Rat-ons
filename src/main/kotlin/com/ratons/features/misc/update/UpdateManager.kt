@@ -1,6 +1,5 @@
-package com.ratons.features.misc
+package com.ratons.features.misc.update
 
-import at.hannibal2.skyhanni.deps.libautoupdate.CurrentVersion
 import at.hannibal2.skyhanni.deps.libautoupdate.GithubReleaseUpdateSource
 import at.hannibal2.skyhanni.deps.libautoupdate.PotentialUpdate
 import at.hannibal2.skyhanni.deps.libautoupdate.UpdateContext
@@ -34,7 +33,7 @@ object UpdateManager {
     private val context = UpdateContext(
         GithubReleaseUpdateSource("Jordyrat", "Rat-ons"),
         UpdateTarget.deleteAndSaveInTheSameFolder(this::class.java),
-        CurrentVersion.ofTag(Ratons.VERSION),
+        SemanticVersion.of(Ratons.VERSION),
         Ratons.MOD_ID,
     )
 
