@@ -1,11 +1,11 @@
 name-template: 'v$NEXT_MINOR_VERSION'
 tag-template: '$NEXT_MINOR_VERSION'
 categories:
-  - title: 'New Features'
+  - title: '### New Features'
     label: 'feature'
-  - title: 'Improvements'
+  - title: '### Improvements'
     label: 'improvement'
-  - title: 'Bug Fixes'
+  - title: '### Bug Fixes'
     label: 'bug'
 
 change-template: '- $BODY (@$AUTHOR - #$NUMBER)'
@@ -17,7 +17,6 @@ include-labels:
 template: |
   This release requires SkyHanni version 0.27.Beta.12
 
-  ## Changes
   $CHANGES
 autolabeler:
   - label: 'bug'
