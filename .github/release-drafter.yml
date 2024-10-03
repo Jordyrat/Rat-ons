@@ -18,16 +18,3 @@ template: |
   This release requires SkyHanni version 0.27.Beta.12
 
   $CHANGES
-autolabeler:
-  - label: 'bug'
-    title:
-      - '/fix/i'
-  - label: 'backend'
-    title:
-      - '/backend/i'
-  - label: 'documentation'
-    title:
-      - '/docs/i'
-  - label: 'improvement'
-    title:
-      - '/improvement/i'
