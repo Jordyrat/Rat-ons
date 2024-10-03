@@ -1,0 +1,34 @@
+name-template: 'v$NEXT_MINOR_VERSION'
+tag-template: '$NEXT_MINOR_VERSION'
+categories:
+  - title: 'New Features'
+    label: 'feature'
+  - title: 'Improvements'
+    label: 'improvement'
+  - title: 'Bug Fixes'
+    label: 'bug'
+
+change-template: '- $BODY (@$AUTHOR - #$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+include-labels:
+  - 'feature'
+  - 'improvement'
+  - 'bug'
+template: |
+  This release requires SkyHanni version 0.27.Beta.12
+
+  ## Changes
+  $CHANGES
+autolabeler:
+  - label: 'bug'
+    title:
+      - '/fix/i'
+  - label: 'backend'
+    title:
+      - '/backend/i'
+  - label: 'documentation'
+    title:
+      - '/docs/i'
+  - label: 'improvement'
+    title:
+      - '/improvement/i'
