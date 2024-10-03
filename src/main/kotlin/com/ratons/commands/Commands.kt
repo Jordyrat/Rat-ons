@@ -9,7 +9,7 @@ import at.hannibal2.skyhanni.utils.chat.Text
 import at.hannibal2.skyhanni.utils.chat.Text.hover
 import at.hannibal2.skyhanni.utils.chat.Text.suggest
 import com.ratons.Ratons
-import com.ratons.features.misc.UpdateManager
+import com.ratons.features.misc.update.UpdateManager
 import net.minecraft.command.CommandBase
 import net.minecraft.command.ICommandSender
 import net.minecraft.util.ChatComponentText
