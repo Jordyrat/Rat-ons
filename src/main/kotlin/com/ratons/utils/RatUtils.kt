@@ -9,4 +9,6 @@ object RatUtils {
     fun Duration.tick(): Duration = (this - 1.ticks).coerceAtLeast(0.seconds)
 
     fun Duration.isZero(): Boolean = this == 0.seconds
+
+    fun <T : Enum<T>> Enum<T>.cleanName(): String = name.replace('_', ' ')
 }

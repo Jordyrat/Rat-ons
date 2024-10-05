@@ -8,6 +8,7 @@ import com.ratons.data.KuudraAPI
 import com.ratons.data.PacketData
 import com.ratons.features.instances.AutoRefill
 import com.ratons.features.instances.dungeons.RelicSpawnTimer
+import com.ratons.features.misc.ItemDataDisplay
 import com.ratons.features.misc.update.UpdateManager
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
@@ -37,6 +38,7 @@ class Ratons {
             AutoRefill,
             RelicSpawnTimer,
             UpdateManager,
+            ItemDataDisplay,
 
             // data
             KuudraAPI,
