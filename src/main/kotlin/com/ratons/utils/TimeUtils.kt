@@ -10,7 +10,8 @@ object TimeUtils {
         val amount = millis / unit.factor
         val remainder = millis % unit.factor
         val decimal = (remainder * 10 / unit.factor).toInt()
-        return "$amount.$decimal ${unit.longName.lowercase()}" + if (amount != 1L) "s" else ""
+        if (decimal < 1) return "$amount ${unit.longName.lowercase()}" + if (amount != 1L) "s" else ""
+        return "$amount.$decimal ${unit.longName.lowercase()}s"
     }
 }
 
