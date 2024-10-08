@@ -11,25 +11,23 @@ object PartyFinderFeatures {
 
     private val config get() = Ratons.feature.instancesConfig.partyFinder
 
-    private const val PARTY_TITLE = "`/§.§.\\w+'s Party/s`"
+    private const val PARTY_TITLE = "/§.§.\\w+'s Party/s"
 
     @SubscribeEvent
     fun onInventoryOpen(event: InventoryFullyOpenedEvent) {
         partySize(event.inventoryItems)
     }
 
-    // Currently broken; both party finders flash all items with a stack size of 5 before quickly reverting
     private fun partySize(inventory: Map<Int, ItemStack>) {
-        if (InventoryUtils.openInventoryName() != "Party Finder") return
-        if (!config.partySizeDisplay) return
-        var openSlots = 0
-        var isDungeon = true
+        if (InventoryUtils.openInventoryName() != "Party Finder" || !config.partySizeDisplay) return
         for (i in inventory){
-            if (i.key in 10..34 && i.value.displayName == PARTY_TITLE) {
-                if (i.value.getLore()[1] == "/§7Tier: .+/s") isDungeon = false
-                for (x in i.value.getLore()) if (x == "§8 Empty") ++openSlots
-            }
-            if (isDungeon) i.value.stackSize = 5-openSlots else i.value.stackSize = 4-openSlots
+            if (i.key !in 10..34 || i.value.displayName != PARTY_TITLE) continue //Getting stuck on this line, likely due to regex
+
+            val isDungeon = i.value.getLore()[0] == "/§7Dungeon: .+/s"
+            var openSlots = 0
+
+            i.value.getLore().forEach { if (it == "§8 Empty") ++openSlots }
+            i.value.stackSize = (if(isDungeon) 5 else 4) - openSlots
         }
     }
 }
