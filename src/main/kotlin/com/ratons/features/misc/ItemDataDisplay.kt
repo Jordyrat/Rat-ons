@@ -36,7 +36,7 @@ object ItemDataDisplay {
         val itemQuality = item.getDungeonStatBoost() ?: return false
         val qualityColor = if (itemQuality == 50) "§d" else "§6"
         val tierColor = if (itemTier == 10) "§d" else "§6"
-        add(index, "§7Item Quality: $qualityColor$itemQuality% §7(Tier $tierColor$itemTier§7)")
+        add(index, "§7Item Quality: +$qualityColor$itemQuality% §7(Tier $tierColor$itemTier§7)")
         return true
     }
 
