@@ -17,5 +17,10 @@ public class InstancesConfig {
     @Accordion
     public AutoRefillConfig autoRefill = new AutoRefillConfig();
 
+    @Expose
+    @ConfigOption(name = "Party Finder", desc = "Party Finder settings")
+    @Accordion
+    public PartyFinderConfig partyFinder = new PartyFinderConfig();
+
 
 }
