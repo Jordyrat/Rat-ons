@@ -10,6 +10,11 @@ import com.ratons.features.instances.AutoRefill
 import com.ratons.features.instances.PartyFinderFeatures
 import com.ratons.features.instances.dungeons.RelicSpawnTimer
 import com.ratons.features.misc.ItemDataDisplay
+import com.ratons.features.misc.esp.CustomEsp
+import com.ratons.features.misc.esp.MobEsp
+import com.ratons.features.misc.esp.PeltEsp
+import com.ratons.features.misc.esp.PestEsp
+import com.ratons.features.misc.esp.StarredEsp
 import com.ratons.features.misc.update.UpdateManager
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
@@ -39,6 +44,11 @@ class Ratons {
             AutoRefill,
             RelicSpawnTimer,
             PartyFinderFeatures,
+            MobEsp,
+            CustomEsp,
+            PeltEsp,
+            PestEsp,
+            StarredEsp,
             UpdateManager,
             ItemDataDisplay,
 
