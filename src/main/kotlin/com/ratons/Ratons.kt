@@ -4,14 +4,18 @@ import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
 import com.ratons.config.features.Features
+import com.ratons.data.KuudraAPI
+import com.ratons.data.PacketData
 import com.ratons.features.esp.CustomEsp
 import com.ratons.features.esp.MobEsp
 import com.ratons.features.esp.PeltEsp
 import com.ratons.features.esp.PestEsp
 import com.ratons.features.esp.StarredEsp
 import com.ratons.features.instances.AutoRefill
-import com.ratons.features.misc.UpdateManager
-import com.ratons.utils.KuudraAPI
+import com.ratons.features.instances.PartyFinderFeatures
+import com.ratons.features.instances.dungeons.RelicSpawnTimer
+import com.ratons.features.misc.ItemDataDisplay
+import com.ratons.features.misc.update.UpdateManager
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -37,16 +41,20 @@ class Ratons {
             this,
 
             // features
+            AutoRefill,
+            RelicSpawnTimer,
+            PartyFinderFeatures,
             MobEsp,
             CustomEsp,
             PeltEsp,
             PestEsp,
             StarredEsp,
-            AutoRefill,
             UpdateManager,
+            ItemDataDisplay,
 
-            // utils
+            // data
             KuudraAPI,
+            PacketData,
 
         ).loadModules()
 

@@ -1,4 +1,4 @@
-package com.ratons.utils
+package com.ratons.data
 
 import at.hannibal2.skyhanni.events.LorenzChatEvent
 import at.hannibal2.skyhanni.features.nether.kuudra.KuudraAPI

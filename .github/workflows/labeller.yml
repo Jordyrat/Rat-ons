@@ -1,0 +1,43 @@
+name: Labeler
+
+on:
+    pull_request_target:
+        types: [opened, edited]
+    issues:
+        types: [opened, edited]
+
+jobs:
+    Label:
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+        steps:
+            - uses: fregante/title-to-labels-action@v1
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  keywords: fix
+                  labels: bug
+
+            -   uses: fregante/title-to-labels-action@v1
+                with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    keywords: feature
+                    labels: feature
+
+            -   uses: fregante/title-to-labels-action@v1
+                with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    keywords: docs
+                    labels: documentation
+
+            -   uses: fregante/title-to-labels-action@v1
+                with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    keywords: improvement
+                    labels: improvement
+
+            -   uses: fregante/title-to-labels-action@v1
+                with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    keywords: backend
+                    labels: backend
