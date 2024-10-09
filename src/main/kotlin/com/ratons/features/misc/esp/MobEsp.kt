@@ -1,4 +1,4 @@
-package com.ratons.features.esp
+package com.ratons.features.misc.esp
 
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
@@ -7,7 +7,7 @@ import com.ratons.utils.RenderUtils.drawBoundingBox
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 object MobEsp {
-    private val config get() = Ratons.feature.espConfig
+    private val config get() = Ratons.feature.misc.espConfig
 
     private val mobs get() = PeltEsp.pelts + PestEsp.pests + StarredEsp.starred + CustomEsp.custom
 
