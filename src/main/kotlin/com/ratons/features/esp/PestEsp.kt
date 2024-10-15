@@ -2,10 +2,13 @@ package com.ratons.features.esp
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.events.EntityMaxHealthUpdateEvent
+import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
 import at.hannibal2.skyhanni.features.garden.GardenAPI.inGarden
+import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
 import com.ratons.Ratons
 import com.ratons.events.EntityLeaveWorldEvent
+import com.ratons.utils.RenderUtils.drawBoundingBox
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.monster.EntitySilverfish
@@ -21,10 +24,21 @@ object PestEsp {
 
     @SubscribeEvent
     fun onMaxHealthUpdate(event: EntityMaxHealthUpdateEvent) {
-        if (!config.pests.get() || !config.enabled.get()) return
+        if (!config.pests || !config.enabled) return
 
         if (isPest(event.entity)) {
             pests.add(event.entity)
+        }
+    }
+
+    @SubscribeEvent
+    fun onRenderWorld(event: LorenzRenderWorldEvent) {
+        if (!config.enabled || !config.pests) return
+
+        pests.forEach {
+            if (!it.isDead) event.drawBoundingBox(
+                it.entityBoundingBox, config.colour.toChromaColor(), 2, true
+            )
         }
     }
 
