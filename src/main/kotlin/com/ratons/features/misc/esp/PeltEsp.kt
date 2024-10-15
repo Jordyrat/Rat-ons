@@ -1,4 +1,4 @@
-package com.ratons.features.esp
+package com.ratons.features.misc.esp
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.data.mob.MobData
@@ -16,7 +16,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 object PeltEsp {
-    private val config = Ratons.feature.espConfig
+    private val config = Ratons.feature.misc.espConfig
 
     val pelts = mutableListOf<EntityLivingBase>()
 

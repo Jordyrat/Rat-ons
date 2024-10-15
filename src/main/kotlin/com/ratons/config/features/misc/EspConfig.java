@@ -1,4 +1,4 @@
-package com.ratons.config.features.esp;
+package com.ratons.config.features.misc;
 
 import at.hannibal2.skyhanni.config.FeatureToggle;
 import at.hannibal2.skyhanni.deps.moulconfig.annotations.ConfigEditorBoolean;
