@@ -6,6 +6,9 @@ import com.ratons.commands.Commands
 import com.ratons.config.features.Features
 import com.ratons.data.KuudraAPI
 import com.ratons.features.instances.AutoRefill
+import com.ratons.features.instances.PartyFinderFeatures
+import com.ratons.features.instances.dungeons.RelicSpawnTimer
+import com.ratons.features.misc.ItemDataDisplay
 import com.ratons.features.misc.esp.CustomEsp
 import com.ratons.features.misc.esp.PeltEsp
 import com.ratons.features.misc.esp.PestEsp
@@ -36,11 +39,14 @@ class Ratons {
             this,
 
             // features
+            AutoRefill,
             CustomEsp,
             PeltEsp,
             PestEsp,
             StarredEsp,
-            AutoRefill,
+            ItemDataDisplay,
+            PartyFinderFeatures,
+            RelicSpawnTimer,
             UpdateManager,
 
             // utils
