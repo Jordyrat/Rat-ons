@@ -8,6 +8,7 @@ import com.ratons.data.KuudraAPI
 import com.ratons.data.PacketData
 import com.ratons.features.instances.AutoRefill
 import com.ratons.features.instances.PartyFinderFeatures
+import com.ratons.features.instances.dungeons.DungeonFeatures
 import com.ratons.features.instances.dungeons.RelicSpawnTimer
 import com.ratons.features.misc.ItemDataDisplay
 import com.ratons.features.misc.update.UpdateManager
@@ -37,10 +38,12 @@ class Ratons {
 
             // features
             AutoRefill,
-            RelicSpawnTimer,
-            PartyFinderFeatures,
-            UpdateManager,
+            DungeonFeatures,
             ItemDataDisplay,
+            PartyFinderFeatures,
+            RelicSpawnTimer,
+            UpdateManager,
+
 
             // data
             KuudraAPI,
