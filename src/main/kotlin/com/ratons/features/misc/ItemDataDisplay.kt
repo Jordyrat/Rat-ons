@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Suppress("SkyHanniModuleInspection")
 object ItemDataDisplay {
 
     private val config get() = Ratons.feature.misc

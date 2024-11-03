@@ -17,7 +17,6 @@ import com.ratons.utils.RatUtils.tick
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
 
-@Suppress("SkyHanniModuleInspection")
 object RelicSpawnTimer {
 
     private val config get() = Ratons.feature.instancesConfig.dungeonsCategory.relicSpawnTimer

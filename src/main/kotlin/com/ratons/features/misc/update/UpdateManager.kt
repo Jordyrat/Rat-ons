@@ -15,7 +15,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.util.concurrent.CompletableFuture
 import javax.net.ssl.HttpsURLConnection
 
-@Suppress("SkyHanniModuleInspection")
 object UpdateManager {
 
     private val config get() = Ratons.feature.about

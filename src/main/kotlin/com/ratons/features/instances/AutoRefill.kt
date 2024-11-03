@@ -12,7 +12,6 @@ import com.ratons.events.KuudraStartEvent
 import com.ratons.utils.ChatUtils
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Suppress("SkyHanniModuleInspection")
 object AutoRefill {
 
     private val config get() = Ratons.feature.instancesConfig.autoRefill

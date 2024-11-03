@@ -1,5 +1,6 @@
 package com.ratons
 
+import at.hannibal2.skyhanni.api.event.SkyHanniEvents
 import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
@@ -51,6 +52,8 @@ class Ratons {
 
         ).loadModules()
 
+        SkyHanniEvents.init(modules)
+
         Commands.init()
     }
 
@@ -61,7 +64,7 @@ class Ratons {
         }
     }
 
-    private fun List<Any>.loadModules() = forEach { loadModule(it) }
+    private fun List<Any>.loadModules() = forEach(::loadModule)
 
     private fun loadModule(obj: Any) {
         modules += obj
