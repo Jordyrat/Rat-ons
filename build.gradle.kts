@@ -69,7 +69,6 @@ repositories {
     maven("https://repo.nea.moe/releases")
     maven("https://maven.notenoughupdates.org/releases") // NotEnoughUpdates (dev env)
     maven("https://maven.teamresourceful.com/repository/thatgravyboat/") // DiscordIPC
-    maven("https://maven.teamresourceful.com/repository/maven-private/")
 }
 
 val shadowImpl: Configuration by configurations.creating {
