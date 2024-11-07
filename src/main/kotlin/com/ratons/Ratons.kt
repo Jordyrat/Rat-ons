@@ -1,5 +1,6 @@
 package com.ratons
 
+import at.hannibal2.skyhanni.api.event.SkyHanniEvents
 import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import com.ratons.commands.Commands
@@ -8,6 +9,7 @@ import com.ratons.data.KuudraAPI
 import com.ratons.data.PacketData
 import com.ratons.features.instances.AutoRefill
 import com.ratons.features.instances.PartyFinderFeatures
+import com.ratons.features.instances.dungeons.DungeonFeatures
 import com.ratons.features.instances.dungeons.RelicSpawnTimer
 import com.ratons.features.misc.ItemDataDisplay
 import com.ratons.features.misc.update.UpdateManager
@@ -37,16 +39,20 @@ class Ratons {
 
             // features
             AutoRefill,
-            RelicSpawnTimer,
-            PartyFinderFeatures,
-            UpdateManager,
+            DungeonFeatures,
             ItemDataDisplay,
+            PartyFinderFeatures,
+            RelicSpawnTimer,
+            UpdateManager,
+
 
             // data
             KuudraAPI,
             PacketData,
 
         ).loadModules()
+
+        SkyHanniEvents.init(modules)
 
         Commands.init()
     }
@@ -58,7 +64,7 @@ class Ratons {
         }
     }
 
-    private fun List<Any>.loadModules() = forEach { loadModule(it) }
+    private fun List<Any>.loadModules() = forEach(::loadModule)
 
     private fun loadModule(obj: Any) {
         modules += obj
