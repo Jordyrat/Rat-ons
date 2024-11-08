@@ -7,9 +7,11 @@ import at.hannibal2.skyhanni.utils.InventoryUtils
 import at.hannibal2.skyhanni.utils.ItemUtils.getLore
 import at.hannibal2.skyhanni.utils.RegexUtils.matches
 import com.ratons.Ratons
+import com.ratons.modules.RatModule
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
+@RatModule
 object PartyFinderFeatures {
 
     private val config get() = Ratons.feature.instancesConfig.partyFinder

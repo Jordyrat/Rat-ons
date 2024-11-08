@@ -1,5 +1,6 @@
 package com.ratons.features.misc.update
 
+import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.deps.libautoupdate.GithubReleaseUpdateSource
 import at.hannibal2.skyhanni.deps.libautoupdate.PotentialUpdate
 import at.hannibal2.skyhanni.deps.libautoupdate.UpdateContext
@@ -7,6 +8,8 @@ import at.hannibal2.skyhanni.deps.libautoupdate.UpdateTarget
 import at.hannibal2.skyhanni.deps.libautoupdate.UpdateUtils
 import at.hannibal2.skyhanni.events.LorenzTickEvent
 import com.ratons.Ratons
+import com.ratons.events.RatCommandRegistrationEvent
+import com.ratons.modules.RatModule
 import com.ratons.utils.ChatUtils
 import io.github.moulberry.notenoughupdates.util.ApiUtil
 import io.github.moulberry.notenoughupdates.util.MinecraftExecutor
@@ -15,6 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.util.concurrent.CompletableFuture
 import javax.net.ssl.HttpsURLConnection
 
+@RatModule
 object UpdateManager {
 
     private val config get() = Ratons.feature.about
@@ -45,6 +49,14 @@ object UpdateManager {
         }
     }
 
+    @HandleEvent
+    fun onCommandRegister(event: RatCommandRegistrationEvent) {
+        event.register("ratupdate") {
+            this.description = "Checks for updates"
+            callback { checkUpdate() }
+        }
+    }
+
     @SubscribeEvent
     fun onTick(event: LorenzTickEvent) {
         if (!config.autoUpdates) return
@@ -53,7 +65,7 @@ object UpdateManager {
         checkUpdate()
     }
 
-    fun checkUpdate(stream: String = config.updateStream.streamName) {
+    private fun checkUpdate(stream: String = config.updateStream.streamName) {
         activePromise = context.checkUpdate(stream)
             .thenAcceptAsync({
                 potentialUpdate = it

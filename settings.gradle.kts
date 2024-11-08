@@ -25,3 +25,4 @@ plugins {
 
 
 rootProject.name = "Rat-ons"
+include("annotations")

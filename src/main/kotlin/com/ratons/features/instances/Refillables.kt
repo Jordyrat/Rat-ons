@@ -1,6 +1,6 @@
 package com.ratons.features.instances
 
-import at.hannibal2.skyhanni.utils.NEUInternalName.Companion.asInternalName
+import at.hannibal2.skyhanni.utils.NEUInternalName.Companion.toInternalName
 
 enum class Refillables(
     internalName: String,
@@ -12,5 +12,5 @@ enum class Refillables(
     INFLATABLE_JERRY("INFLATABLE_JERRY", "§fInflatable Jerry", 64),
     ;
 
-    val internalName = internalName.asInternalName()
+    val internalName = internalName.toInternalName()
 }
