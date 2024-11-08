@@ -5,6 +5,7 @@ run/
 build/
 bin/
 
+.kotlin/
 # gradle
 build
 gradle.properties

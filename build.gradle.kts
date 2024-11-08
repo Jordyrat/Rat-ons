@@ -12,6 +12,7 @@ plugins {
     kotlin("plugin.serialization") version "1.8.0"
     id("com.bnorm.power.kotlin-power-assert") version "0.13.0"
     id("net.kyori.blossom") version "1.3.2"
+    id("com.google.devtools.ksp") version "2.0.20-1.0.25"
 }
 
 //Constants:
@@ -99,6 +100,7 @@ dependencies {
     shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         isTransitive = false
     }
+    compileOnly(ksp(project("annotations"))!!)
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT")
 
     // If you don't want to log in with your real minecraft account, remove this line
@@ -121,6 +123,10 @@ dependencies {
         exclude(group = "null", module = "unspecified")
         isTransitive = false
     }
+}
+
+ksp {
+    arg("symbolProcessor", "com.ratons.modules.ModuleProvider")
 }
 
 kotlin {
@@ -183,7 +189,6 @@ tasks.compileJava {
 tasks.withType(JavaCompile::class) {
     options.encoding = "UTF-8"
 }
-
 
 tasks.withType(Jar::class) {
     destinationDirectory.set(project.layout.buildDirectory.dir("badjars"))
