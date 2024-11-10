@@ -3,6 +3,7 @@ package com.ratons.features.misc
 import at.hannibal2.skyhanni.events.LorenzToolTipEvent
 import at.hannibal2.skyhanni.utils.LorenzUtils
 import com.ratons.Ratons
+import com.ratons.modules.RatModule
 import com.ratons.utils.ItemUtils.getDungeonStatBoost
 import com.ratons.utils.ItemUtils.getDungeonTier
 import com.ratons.utils.ItemUtils.getItemTimestamp
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
+@RatModule
 object ItemDataDisplay {
 
     private val config get() = Ratons.feature.misc

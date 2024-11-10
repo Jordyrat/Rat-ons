@@ -3,16 +3,9 @@ package com.ratons
 import at.hannibal2.skyhanni.api.event.SkyHanniEvents
 import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
-import com.ratons.commands.Commands
 import com.ratons.config.features.Features
-import com.ratons.data.KuudraAPI
-import com.ratons.data.PacketData
-import com.ratons.features.instances.AutoRefill
-import com.ratons.features.instances.PartyFinderFeatures
-import com.ratons.features.instances.dungeons.DungeonFeatures
-import com.ratons.features.instances.dungeons.RelicSpawnTimer
-import com.ratons.features.misc.ItemDataDisplay
-import com.ratons.features.misc.update.UpdateManager
+import com.ratons.events.RatCommandRegistrationEvent
+import com.ratons.modules.Modules
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -34,27 +27,12 @@ class Ratons {
 
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
-        listOf(
-            this,
+        Modules.modules.loadModules()
 
-            // features
-            AutoRefill,
-            DungeonFeatures,
-            ItemDataDisplay,
-            PartyFinderFeatures,
-            RelicSpawnTimer,
-            UpdateManager,
-
-
-            // data
-            KuudraAPI,
-            PacketData,
-
-        ).loadModules()
-
+        loadModule(this)
         SkyHanniEvents.init(modules)
 
-        Commands.init()
+        RatCommandRegistrationEvent.post()
     }
 
     @SubscribeEvent
