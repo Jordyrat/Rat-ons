@@ -11,13 +11,14 @@ import at.hannibal2.skyhanni.utils.RenderUtils.drawString
 import at.hannibal2.skyhanni.utils.TimeUtils.format
 import com.ratons.Ratons
 import com.ratons.events.ServerTickEvent
+import com.ratons.modules.RatModule
 import com.ratons.utils.ChatUtils
 import com.ratons.utils.RatUtils.isZero
 import com.ratons.utils.RatUtils.tick
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
 
-@Suppress("SkyHanniModuleInspection")
+@RatModule
 object RelicSpawnTimer {
 
     private val config get() = Ratons.feature.instancesConfig.dungeonsCategory.relicSpawnTimer

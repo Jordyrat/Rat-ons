@@ -9,10 +9,11 @@ import at.hannibal2.skyhanni.features.dungeon.DungeonFloor
 import at.hannibal2.skyhanni.utils.InventoryUtils.getAmountInInventory
 import com.ratons.Ratons
 import com.ratons.events.KuudraStartEvent
+import com.ratons.modules.RatModule
 import com.ratons.utils.ChatUtils
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Suppress("SkyHanniModuleInspection")
+@RatModule
 object AutoRefill {
 
     private val config get() = Ratons.feature.instancesConfig.autoRefill

@@ -13,5 +13,10 @@ public class DungeonsConfig {
     @FeatureToggle
     public boolean relicSpawnTimer = false;
 
+    @Expose
+    @ConfigOption(name = "Close Secret Chest", desc = "Automatically closes secret chests when opened.")
+    @ConfigEditorBoolean
+    @FeatureToggle
+    public boolean closeSecretChest = false;
 
 }

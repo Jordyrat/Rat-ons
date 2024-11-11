@@ -18,9 +18,8 @@ public abstract class MixinFMLHandshakeMessageModList {
     @Shadow
     public abstract Map<String, String> modList();
 
-    @Inject(method = "<init>(Ljava/util/List;)V", at = @At(value = "RETURN"))
+    @Inject(method = "<init>(Ljava/util/List;)V", at = @At("RETURN"))
     public void onInitLast(List modList, CallbackInfo ci) {
-        if (!Ratons.HIDE_MOD_ID) return;
-        modList().remove(Ratons.MOD_ID);
+        if (Ratons.HIDE_MOD_ID) modList().remove(Ratons.MOD_ID);
     }
 }

@@ -1,8 +1,9 @@
 {
-  "package": "${basePackage}.mixin",
-  "plugin": "${basePackage}.init.AutoDiscoveryMixinPlugin",
-  "refmap": "mixins.${modid}.refmap.json",
-  "minVersion": "0.7",
-  "compatibilityLevel": "JAVA_8",
-  "__comment": "You do not need to manually register mixins in this template. Check the auto discovery mixin plugin for more info."
+    "package": "com.ratons.mixins.transformers",
+    "plugin": "com.ratons.mixins.init.AutoDiscoveryMixinPlugin",
+    "refmap": "mixins.ratons.refmap.json",
+    "compatibilityLevel": "JAVA_8",
+    "injectors": {
+        "maxShiftBy": 2
+    }
 }
