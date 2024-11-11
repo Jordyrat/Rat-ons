@@ -8,11 +8,13 @@ import at.hannibal2.skyhanni.events.MobEvent
 import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
 import com.ratons.Ratons
 import com.ratons.events.EntityLeaveWorldEvent
+import com.ratons.modules.RatModule
 import com.ratons.utils.RenderUtils.drawBoundingBox
 import net.minecraft.client.entity.EntityOtherPlayerMP
 import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
+@RatModule
 object StarredEsp {
     private val config = Ratons.feature.misc.espConfig
 

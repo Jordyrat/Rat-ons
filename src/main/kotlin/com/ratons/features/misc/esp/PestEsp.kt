@@ -8,6 +8,7 @@ import at.hannibal2.skyhanni.features.garden.GardenAPI.inGarden
 import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
 import com.ratons.Ratons
 import com.ratons.events.EntityLeaveWorldEvent
+import com.ratons.modules.RatModule
 import com.ratons.utils.RenderUtils.drawBoundingBox
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -15,6 +16,7 @@ import net.minecraft.entity.monster.EntitySilverfish
 import net.minecraft.entity.passive.EntityBat
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
+@RatModule
 object PestEsp {
 
     private val config = Ratons.feature.misc.espConfig
