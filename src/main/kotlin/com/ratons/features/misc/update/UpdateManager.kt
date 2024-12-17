@@ -23,12 +23,10 @@ object UpdateManager {
 
     private val config get() = Ratons.feature.about
 
-    private var _activePromise: CompletableFuture<*>? = null
-    private var activePromise: CompletableFuture<*>?
-        get() = _activePromise
+    private var activePromise: CompletableFuture<*>? = null
         set(value) {
-            _activePromise?.cancel(true)
-            _activePromise = value
+            field?.cancel(true)
+            field = value
         }
 
     private var potentialUpdate: PotentialUpdate? = null

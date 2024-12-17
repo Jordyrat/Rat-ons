@@ -73,8 +73,4 @@ object ChatUtils {
         val msgPrefix = if (prefix) prefixColor + CHAT_PREFIX else ""
         ChatUtils.chat(Text.join(components).prefix(msgPrefix))
     }
-
-    fun sendMessageToServer(message: String) = ChatUtils.sendMessageToServer(message)
-
-    fun sendCommandToServer(command: String) = ChatUtils.sendCommandToServer(command)
 }

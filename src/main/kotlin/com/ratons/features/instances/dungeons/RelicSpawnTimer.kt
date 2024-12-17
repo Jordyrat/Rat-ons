@@ -1,6 +1,7 @@
 package com.ratons.features.instances.dungeons
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
+import at.hannibal2.skyhanni.data.IslandType
 import at.hannibal2.skyhanni.events.LorenzChatEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
@@ -44,7 +45,7 @@ object RelicSpawnTimer {
         }
     }
 
-    @HandleEvent
+    @HandleEvent(onlyOnIsland = IslandType.CATACOMBS)
     fun onServerTick(event: ServerTickEvent) {
         timer = timer.tick()
     }

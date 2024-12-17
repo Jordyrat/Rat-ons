@@ -3,8 +3,10 @@ package com.ratons
 import at.hannibal2.skyhanni.api.event.SkyHanniEvents
 import at.hannibal2.skyhanni.deps.moulconfig.managed.ManagedConfig
 import at.hannibal2.skyhanni.events.SecondPassedEvent
+import at.hannibal2.skyhanni.test.command.ErrorManager
 import com.ratons.config.features.Features
 import com.ratons.events.RatCommandRegistrationEvent
+import com.ratons.mixins.transformers.skyhanni.AccessorSkyHanniEvents
 import com.ratons.modules.Modules
 import net.minecraft.client.Minecraft
 import net.minecraftforge.common.MinecraftForge
@@ -45,8 +47,21 @@ class Ratons {
     private fun List<Any>.loadModules() = forEach(::loadModule)
 
     private fun loadModule(obj: Any) {
-        modules += obj
-        MinecraftForge.EVENT_BUS.register(obj)
+        if (obj in modules) return
+        try {
+            for (method in obj.javaClass.declaredMethods) {
+                @Suppress("CAST_NEVER_SUCCEEDS")
+                (SkyHanniEvents as AccessorSkyHanniEvents).`ratons$registerMethod`(method, obj)
+            }
+            MinecraftForge.EVENT_BUS.register(obj)
+            modules.add(obj)
+        } catch (e: Exception) {
+            ErrorManager.logErrorWithData(
+                e,
+                "§cRATONS ERROR!! Something went wrong while initializing events. " +
+                    "Please report this if you are on latest SkyHanni beta, or update if you aren't.",
+            )
+        }
     }
 
     companion object {
