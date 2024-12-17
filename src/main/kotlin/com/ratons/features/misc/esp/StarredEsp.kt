@@ -1,10 +1,10 @@
 package com.ratons.features.misc.esp
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
-import at.hannibal2.skyhanni.events.EntityMaxHealthUpdateEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
 import at.hannibal2.skyhanni.events.MobEvent
+import at.hannibal2.skyhanni.events.entity.EntityMaxHealthUpdateEvent
 import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
 import com.ratons.Ratons
 import com.ratons.events.EntityLeaveWorldEvent
@@ -44,7 +44,7 @@ object StarredEsp {
         }
     }
 
-    @SubscribeEvent
+    @HandleEvent
     fun onMaxHealthUpdate(event: EntityMaxHealthUpdateEvent) {
         if (!config.enabled || !config.starred) return
 

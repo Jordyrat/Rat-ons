@@ -2,10 +2,10 @@ package com.ratons.features.misc.esp
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.data.mob.MobData
-import at.hannibal2.skyhanni.events.EntityMaxHealthUpdateEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
 import at.hannibal2.skyhanni.events.MobEvent
+import at.hannibal2.skyhanni.events.entity.EntityMaxHealthUpdateEvent
 import at.hannibal2.skyhanni.features.misc.trevor.TrevorTracker.TrapperMobRarity
 import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
 import com.ratons.Ratons
@@ -38,7 +38,7 @@ object PeltEsp {
         if (isPelt(event.mob.baseEntity)) pelts.add(event.mob.baseEntity)
     }
 
-    @SubscribeEvent
+    @HandleEvent
     fun onMaxHealthUpdate(event: EntityMaxHealthUpdateEvent) {
         if (!config.pelts || !config.enabled) return
 

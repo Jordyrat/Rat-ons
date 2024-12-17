@@ -1,9 +1,9 @@
 package com.ratons.features.misc.esp
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
-import at.hannibal2.skyhanni.events.EntityMaxHealthUpdateEvent
 import at.hannibal2.skyhanni.events.LorenzRenderWorldEvent
 import at.hannibal2.skyhanni.events.LorenzWorldChangeEvent
+import at.hannibal2.skyhanni.events.entity.EntityMaxHealthUpdateEvent
 import at.hannibal2.skyhanni.features.garden.GardenAPI.inGarden
 import at.hannibal2.skyhanni.utils.ColorUtils.toChromaColor
 import com.ratons.Ratons
@@ -24,7 +24,7 @@ object PestEsp {
     val pests = mutableListOf<EntityLivingBase>()
     private fun isPest(entity: Entity): Boolean = inGarden() && (entity is EntitySilverfish || entity is EntityBat)
 
-    @SubscribeEvent
+    @HandleEvent
     fun onMaxHealthUpdate(event: EntityMaxHealthUpdateEvent) {
         if (!config.pests || !config.enabled) return
 
