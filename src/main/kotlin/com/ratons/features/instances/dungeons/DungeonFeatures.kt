@@ -1,6 +1,7 @@
 package com.ratons.features.instances.dungeons
 
 import at.hannibal2.skyhanni.api.event.HandleEvent
+import at.hannibal2.skyhanni.data.IslandType
 import at.hannibal2.skyhanni.events.minecraft.packet.PacketReceivedEvent
 import at.hannibal2.skyhanni.features.dungeon.DungeonAPI
 import com.ratons.Ratons
@@ -14,7 +15,7 @@ object DungeonFeatures {
 
     private val config get() = Ratons.feature.instancesConfig.dungeonsCategory
 
-    @HandleEvent(receiveCancelled = true)
+    @HandleEvent(onlyOnIsland = IslandType.CATACOMBS, receiveCancelled = true)
     fun onPacket(event: PacketReceivedEvent) {
         val packet = event.packet as? S2DPacketOpenWindow ?: return
         if (!config.closeSecretChest || !DungeonAPI.inDungeon()) return
