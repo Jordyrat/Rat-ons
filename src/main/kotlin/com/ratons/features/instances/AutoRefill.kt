@@ -18,10 +18,7 @@ object AutoRefill {
     private val config get() = Ratons.feature.instancesConfig.autoRefill
 
     @HandleEvent
-    fun onDungeonStart(event: DungeonStartEvent) {
-        ChatUtils.chat("test")
-        newInstance()
-    }
+    fun onDungeonStart(event: DungeonStartEvent) = newInstance()
 
     @HandleEvent
     fun onKuudraStart(event: KuudraStartEvent) = newInstance()
