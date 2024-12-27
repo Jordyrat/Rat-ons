@@ -29,10 +29,8 @@ class Ratons {
 
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
-        Modules.modules.loadModules()
-
         loadModule(this)
-        SkyHanniEvents.init(modules)
+        Modules.modules.loadModules()
 
         RatCommandRegistrationEvent.post()
     }
