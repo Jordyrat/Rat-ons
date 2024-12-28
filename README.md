@@ -9,6 +9,8 @@
 
 </div>
 
+<b># NO LONGER IN-PRODUCTION. ARCHIVED IN-FAVOUR OF A PRIVATE MOD</b>
+
 A 1.8.9 Minecraft mod made for Hypixel Skyblock. Rat-ons focuses on trying to reduce your modlist with features considered UAYOR (Use At Your Own Risk).
 
 If you like Rat-ons, please consider Starring!
