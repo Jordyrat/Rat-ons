@@ -9,7 +9,7 @@
 
 </div>
 
-<b># NO LONGER IN-PRODUCTION. ARCHIVED IN-FAVOUR OF A PRIVATE MOD</b>
+<h2>NO LONGER IN-PRODUCTION. ARCHIVED IN-FAVOUR OF A PRIVATE MOD</h2>
 
 A 1.8.9 Minecraft mod made for Hypixel Skyblock. Rat-ons focuses on trying to reduce your modlist with features considered UAYOR (Use At Your Own Risk).
 
